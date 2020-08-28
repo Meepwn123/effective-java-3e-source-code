@@ -1,7 +1,12 @@
 package effectivejava.chapter2.item2.hierarchicalbuilder;
 
-// Subclass with hierarchical builder (Page 15)
+/**
+ * Subclass with hierarchical builder (Page 15)
+ *
+ * @author Meepwn
+ */
 public class Calzone extends Pizza {
+
     private final boolean sauceInside;
 
     public static class Builder extends Pizza.Builder<Builder> {
@@ -12,11 +17,15 @@ public class Calzone extends Pizza {
             return this;
         }
 
-        @Override public Calzone build() {
+        @Override
+        public Calzone build() {
             return new Calzone(this);
         }
 
-        @Override protected Builder self() { return this; }
+        @Override
+        protected Builder self() {
+            return this;
+        }
     }
 
     private Calzone(Builder builder) {
@@ -24,7 +33,8 @@ public class Calzone extends Pizza {
         sauceInside = builder.sauceInside;
     }
 
-    @Override public String toString() {
+    @Override
+    public String toString() {
         return String.format("Calzone with %s and sauce on the %s",
                 toppings, sauceInside ? "inside" : "outside");
     }

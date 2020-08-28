@@ -1,18 +1,20 @@
 package effectivejava.chapter2.item6;
 
-import java.util.Comparator;
-
-// Hideously slow program! Can you spot the object creation? (Page 24)
+/**
+ * Hideously slow program! Can you spot the object creation? (Page 22)
+ * @author Meepwn
+ */
 public class Sum {
     private static long sum() {
-        Long sum = 0L;
-        for (long i = 0; i <= Integer.MAX_VALUE; i++)
+        long sum = 0L;
+        for (long i = 0; i <= Integer.MAX_VALUE; i++) {
             sum += i;
+        }
         return sum;
     }
 
     public static void main(String[] args) {
-        int numSets = Integer.parseInt(args[0]);
+        int numSets = 1;
         long x = 0;
 
         for (int i = 0; i < numSets; i++) {
@@ -23,7 +25,8 @@ public class Sum {
         }
 
         // Prevents VM from optimizing away everything.
-        if (x == 42)
+        if (x == 42) {
             System.out.println();
+        }
     }
 }

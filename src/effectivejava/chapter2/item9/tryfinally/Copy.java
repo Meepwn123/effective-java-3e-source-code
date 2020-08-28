@@ -2,10 +2,16 @@ package effectivejava.chapter2.item9.tryfinally;
 
 import java.io.*;
 
+/**
+ * @author Meepwn
+ */
 public class Copy {
+
     private static final int BUFFER_SIZE = 8 * 1024;
 
-    // try-finally is ugly when used with more than one resource! (Page 34)
+    /**
+     * try-finally is ugly when used with more than one resource! (Page 30)
+     */
     static void copy(String src, String dst) throws IOException {
         InputStream in = new FileInputStream(src);
         try {
@@ -13,8 +19,9 @@ public class Copy {
             try {
                 byte[] buf = new byte[BUFFER_SIZE];
                 int n;
-                while ((n = in.read(buf)) >= 0)
+                while ((n = in.read(buf)) >= 0) {
                     out.write(buf, 0, n);
+                }
             } finally {
                 out.close();
             }

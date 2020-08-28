@@ -3,7 +3,10 @@ package effectivejava.chapter2.item2.hierarchicalbuilder;
 import static effectivejava.chapter2.item2.hierarchicalbuilder.Pizza.Topping.*;
 import static effectivejava.chapter2.item2.hierarchicalbuilder.NyPizza.Size.*;
 
-// Using the hierarchical builder (Page 16)
+/**
+ *  Using the hierarchical builder (Page 16)
+ * @author Meepwn
+ */
 public class PizzaTest {
     public static void main(String[] args) {
         NyPizza pizza = new NyPizza.Builder(SMALL)
