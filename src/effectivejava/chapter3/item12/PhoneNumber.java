@@ -1,6 +1,9 @@
 package effectivejava.chapter3.item12;
 
-// Adding a toString method to PhoneNumber (page 52)
+/**
+ * Adding a toString method to PhoneNumber (page 52)
+ * @author Meepwn
+ */
 public final class PhoneNumber {
     private final short areaCode, prefix, lineNum;
 
@@ -11,16 +14,19 @@ public final class PhoneNumber {
     }
 
     private static short rangeCheck(int val, int max, String arg) {
-        if (val < 0 || val > max)
+        if (val < 0 || val > max) {
             throw new IllegalArgumentException(arg + ": " + val);
+        }
         return (short) val;
     }
 
     @Override public boolean equals(Object o) {
-        if (o == this)
+        if (o == this) {
             return true;
-        if (!(o instanceof effectivejava.chapter3.item11.PhoneNumber))
+        }
+        if (!(o instanceof effectivejava.chapter3.item11.PhoneNumber)) {
             return false;
+        }
         PhoneNumber pn = (PhoneNumber)o;
         return pn.lineNum == lineNum && pn.prefix == prefix
                 && pn.areaCode == areaCode;
@@ -45,10 +51,10 @@ public final class PhoneNumber {
      * For example, if the value of the line number is 123, the last
      * four characters of the string representation will be "0123".
      */
-//    @Override public String toString() {
-//        return String.format("%03d-%03d-%04d",
-//                areaCode, prefix, lineNum);
-//    }
+    @Override public String toString() {
+        return String.format("%03d-%03d-%04d",
+                areaCode, prefix, lineNum);
+    }
 
     public static void main(String[] args) {
         PhoneNumber jenny = new PhoneNumber(707, 867, 5309);

@@ -3,7 +3,10 @@ import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import static java.util.Comparator.*;
 
-// Making PhoneNumber comparable (Pages 69-70)
+/**
+ * Making PhoneNumber comparable (Pages 61-63)
+ * @author Meepwn
+ */
 public final class PhoneNumber implements Cloneable, Comparable<PhoneNumber> {
     private final short areaCode, prefix, lineNum;
 
@@ -14,16 +17,19 @@ public final class PhoneNumber implements Cloneable, Comparable<PhoneNumber> {
     }
 
     private static short rangeCheck(int val, int max, String arg) {
-        if (val < 0 || val > max)
+        if (val < 0 || val > max) {
             throw new IllegalArgumentException(arg + ": " + val);
+        }
         return (short) val;
     }
 
     @Override public boolean equals(Object o) {
-        if (o == this)
+        if (o == this) {
             return true;
-        if (!(o instanceof effectivejava.chapter3.item11.PhoneNumber))
+        }
+        if (!(o instanceof PhoneNumber)) {
             return false;
+        }
         PhoneNumber pn = (PhoneNumber)o;
         return pn.lineNum == lineNum && pn.prefix == prefix
                 && pn.areaCode == areaCode;
@@ -53,7 +59,7 @@ public final class PhoneNumber implements Cloneable, Comparable<PhoneNumber> {
                 areaCode, prefix, lineNum);
     }
 
-//    // Multiple-field Comparable with primitive fields (page 69)
+//    // Multiple-field Comparable with primitive fields (page 61)
 //    public int compareTo(PhoneNumber pn) {
 //        int result = Short.compare(areaCode, pn.areaCode);
 //        if (result == 0)  {
@@ -64,12 +70,13 @@ public final class PhoneNumber implements Cloneable, Comparable<PhoneNumber> {
 //        return result;
 //    }
 
-    // Comparable with comparator construction methods (page 70)
+    // Comparable with comparator construction methods (page 62)
     private static final Comparator<PhoneNumber> COMPARATOR =
             comparingInt((PhoneNumber pn) -> pn.areaCode)
                     .thenComparingInt(pn -> pn.prefix)
                     .thenComparingInt(pn -> pn.lineNum);
 
+    @Override
     public int compareTo(PhoneNumber pn) {
         return COMPARATOR.compare(this, pn);
     }
@@ -82,9 +89,10 @@ public final class PhoneNumber implements Cloneable, Comparable<PhoneNumber> {
     }
 
     public static void main(String[] args) {
-        NavigableSet<PhoneNumber> s = new TreeSet<PhoneNumber>();
-        for (int i = 0; i < 10; i++)
+        NavigableSet<PhoneNumber> s = new TreeSet<>();
+        for (int i = 0; i < 10; i++) {
             s.add(randomPhoneNumber());
+        }
         System.out.println(s);
     }
 }

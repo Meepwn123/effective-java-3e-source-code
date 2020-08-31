@@ -1,7 +1,12 @@
 package effectivejava.chapter3.item10;
 
-// Class with a typical equals method (Page 48)
+/**
+ * Class with a typical equals method (Page 42)
+ * @author Meepwn
+ */
+@SuppressWarnings("unused")
 public final class PhoneNumber {
+
     private final short areaCode, prefix, lineNum;
 
     public PhoneNumber(int areaCode, int prefix, int lineNum) {
@@ -11,16 +16,19 @@ public final class PhoneNumber {
     }
 
     private static short rangeCheck(int val, int max, String arg) {
-        if (val < 0 || val > max)
+        if (val < 0 || val > max) {
             throw new IllegalArgumentException(arg + ": " + val);
+        }
         return (short) val;
     }
 
     @Override public boolean equals(Object o) {
-        if (o == this)
+        if (o == this) {
             return true;
-        if (!(o instanceof PhoneNumber))
+        }
+        if (!(o instanceof PhoneNumber)) {
             return false;
+        }
         PhoneNumber pn = (PhoneNumber)o;
         return pn.lineNum == lineNum && pn.prefix == prefix
                 && pn.areaCode == areaCode;

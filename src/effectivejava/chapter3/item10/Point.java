@@ -1,6 +1,9 @@
 package effectivejava.chapter3.item10;
 
-// Simple immutable two-dimensional integer point class (Page 37)
+/**
+ * Simple immutable two-dimensional integer point class (Page 36 -- Page 37)
+ * @author Meepwn
+ */
 public class Point {
     private final int x;
     private final int y;
@@ -10,23 +13,28 @@ public class Point {
         this.y = y;
     }
 
+    /** See Item 11 */
+    @Override
+    public int hashCode()  {
+        return 31 * x + y;
+    }
+
+    /** Broken - violates Liskov substitution principle (page 38) */
     @Override public boolean equals(Object o) {
-        if (!(o instanceof Point))
+        if (o == null || o.getClass() != getClass()) {
             return false;
-        Point p = (Point)o;
+        }
+        Point p = (Point) o;
         return p.x == x && p.y == y;
     }
 
-//    // Broken - violates Liskov substitution principle (page 43)
-//    @Override public boolean equals(Object o) {
-//        if (o == null || o.getClass() != getClass())
+//    @Override
+//    public boolean equals(Object o) {
+//        if (!(o instanceof Point)) {
 //            return false;
-//        Point p = (Point) o;
+//        }
+//        Point p = (Point)o;
 //        return p.x == x && p.y == y;
 //    }
 
-    // See Item 11
-    @Override public int hashCode()  {
-        return 31 * x + y;
-    }
 }

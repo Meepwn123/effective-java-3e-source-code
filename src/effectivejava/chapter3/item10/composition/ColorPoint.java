@@ -5,8 +5,13 @@ import effectivejava.chapter3.item10.Point;
 
 import java.util.Objects;
 
-// Adds a value component without violating the equals contract (page 44)
+/**
+ * Adds a value component without violating the equals contract (page 39)
+ * @author Meepwn
+ */
+@SuppressWarnings("unused")
 public class ColorPoint {
+
     private final Point point;
     private final Color color;
 
@@ -23,8 +28,9 @@ public class ColorPoint {
     }
 
     @Override public boolean equals(Object o) {
-        if (!(o instanceof ColorPoint))
+        if (!(o instanceof ColorPoint)) {
             return false;
+        }
         ColorPoint cp = (ColorPoint) o;
         return cp.point.equals(point) && cp.color.equals(color);
     }

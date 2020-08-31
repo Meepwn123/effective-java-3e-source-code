@@ -1,3 +1,10 @@
 package effectivejava.chapter3.item10;
 
-public enum Color { RED, ORANGE, YELLOW, GREEN, BLUE, INDIGO, VIOLET }
+/**
+ * @author Meepwn
+ */
+
+public enum Color {
+    // 颜色
+    RED, ORANGE, YELLOW, GREEN, BLUE, INDIGO, VIOLET
+}

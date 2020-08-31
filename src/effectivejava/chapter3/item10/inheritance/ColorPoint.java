@@ -3,8 +3,12 @@ package effectivejava.chapter3.item10.inheritance;
 import effectivejava.chapter3.item10.Color;
 import effectivejava.chapter3.item10.Point;
 
-// Attempting to add a value component to Point (Page 41)
+/**
+ * Attempting to add a value component to Point (Page 41)
+ * @author Meepwn
+ */
 public class ColorPoint extends Point {
+
     private final Color color;
 
     public ColorPoint(int x, int y, Color color) {
@@ -12,25 +16,28 @@ public class ColorPoint extends Point {
         this.color = color;
     }
 
-    // Broken - violates symmetry!  (Page 41)
-    @Override public boolean equals(Object o) {
-        if (!(o instanceof ColorPoint))
-            return false;
-        return super.equals(o) && ((ColorPoint) o).color == color;
-    }
-
-//    // Broken - violates transitivity! (page 42)
+//    /** Broken - violates symmetry!  (Page 37) */
 //    @Override public boolean equals(Object o) {
-//        if (!(o instanceof Point))
+//        if (!(o instanceof ColorPoint)) {
 //            return false;
-//
-//        // If o is a normal Point, do a color-blind comparison
-//        if (!(o instanceof ColorPoint))
-//            return o.equals(this);
-//
-//        // o is a ColorPoint; do a full comparison
+//        }
 //        return super.equals(o) && ((ColorPoint) o).color == color;
 //    }
+
+    /** Broken - violates transitivity! (page 37 -- page 38) */
+    @Override public boolean equals(Object o) {
+        if (!(o instanceof Point)) {
+            return false;
+        }
+
+        // If o is a normal Point, do a color-blind comparison
+        if (!(o instanceof ColorPoint)) {
+            return o.equals(this);
+        }
+
+        // o is a ColorPoint; do a full comparison
+        return super.equals(o) && ((ColorPoint) o).color == color;
+    }
 
     public static void main(String[] args) {
         // First equals function violates symmetry (Page 42)

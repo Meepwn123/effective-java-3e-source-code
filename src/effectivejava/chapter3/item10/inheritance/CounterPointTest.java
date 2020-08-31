@@ -3,7 +3,11 @@ import effectivejava.chapter3.item10.Point;
 
 import java.util.*;
 
-// Test program that uses CounterPoint as Point
+/**
+ * Test program that uses CounterPoint as Point
+ * @author Meepwn
+ */
+@SuppressWarnings("unused")
 public class CounterPointTest {
     // Initialize unitCircle to contain all Points on the unit circle  (Page 43)
     private static final Set<Point> unitCircle = Set.of(
