@@ -1,7 +1,12 @@
 package effectivejava.chapter4.item17;
 
-// Immutable complex number class (Pages 81-82)
+/**
+ * Immutable complex number class (Pages 71-75)
+ * @author Meepwn
+ */
+@SuppressWarnings("unused")
 public final class Complex {
+
     private final double re;
     private final double im;
 
@@ -21,11 +26,6 @@ public final class Complex {
         return new Complex(re + c.re, im + c.im);
     }
 
-    // Static factory, used in conjunction with private constructor (Page 85)
-    public static Complex valueOf(double re, double im) {
-        return new Complex(re, im);
-    }
-
     public Complex minus(Complex c) {
         return new Complex(re - c.re, im - c.im);
     }
@@ -41,19 +41,30 @@ public final class Complex {
                 (im * c.re - re * c.im) / tmp);
     }
 
+    /**
+     * Static factory, used in conjunction with private constructor (Page 75)
+     */
+    public static Complex valueOf(double re, double im) {
+        return new Complex(re, im);
+    }
+
+
+    @Override public int hashCode() {
+        return 31 * Double.hashCode(re) + Double.hashCode(im);
+    }
+
     @Override public boolean equals(Object o) {
-        if (o == this)
+        if (o == this) {
             return true;
-        if (!(o instanceof Complex))
+        }
+        if (!(o instanceof Complex)) {
             return false;
+        }
         Complex c = (Complex) o;
 
         // See page 47 to find out why we use compare instead of ==
         return Double.compare(c.re, re) == 0
                 && Double.compare(c.im, im) == 0;
-    }
-    @Override public int hashCode() {
-        return 31 * Double.hashCode(re) + Double.hashCode(im);
     }
 
     @Override public String toString() {

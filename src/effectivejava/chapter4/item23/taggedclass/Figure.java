@@ -1,26 +1,33 @@
 package effectivejava.chapter4.item23.taggedclass;
 
-// Tagged class - vastly inferior to a class hierarchy! (Page 109)
+/**
+ * Tagged class - vastly inferior to a class hierarchy! (Page 93 - 94)
+ */
+@SuppressWarnings("unused")
 class Figure {
-    enum Shape { RECTANGLE, CIRCLE };
 
-    // Tag field - the shape of this figure
+    enum Shape {
+        // 形状
+        RECTANGLE, CIRCLE
+    }
+
+    /** Tag field - the shape of this figure */
     final Shape shape;
 
-    // These fields are used only if shape is RECTANGLE
+    /** These fields are used only if shape is RECTANGLE */
     double length;
     double width;
 
-    // This field is used only if shape is CIRCLE
+    /** This field is used only if shape is CIRCLE */
     double radius;
 
-    // Constructor for circle
+    /** Constructor for circle */
     Figure(double radius) {
         shape = Shape.CIRCLE;
         this.radius = radius;
     }
 
-    // Constructor for rectangle
+    /** Constructor for rectangle */
     Figure(double length, double width) {
         shape = Shape.RECTANGLE;
         this.length = length;

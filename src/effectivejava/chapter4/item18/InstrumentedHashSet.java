@@ -1,9 +1,13 @@
 package effectivejava.chapter4.item18;
 import java.util.*;
 
-// Broken - Inappropriate use of inheritance! (Page 87)
+/**
+ * Broken - Inappropriate use of inheritance! (Page 77)
+ * @author Meepwn
+ */
+@SuppressWarnings("unused")
 public class InstrumentedHashSet<E> extends HashSet<E> {
-    // The number of attempted element insertions
+    /** The number of attempted element insertions */
     private int addCount = 0;
 
     public InstrumentedHashSet() {

@@ -1,7 +1,12 @@
 package effectivejava.chapter4.item25;
 
-// Static member classes instead of multiple top-level classes (Page 116)
+/**
+ * Static member classes instead of multiple top-level classes (Page 99 - 100)
+ *
+ * @author Meepwn
+ */
 public class Test {
+
     public static void main(String[] args) {
         System.out.println(Utensil.NAME + Dessert.NAME);
     }

@@ -1,6 +1,7 @@
 package effectivejava.chapter4.item16;
 
-// Encapsulation of data by accessor methods and mutators  (Page 78)
+/** Encapsulation of data by accessor methods and mutators  (Page 78) */
+@SuppressWarnings("unused")
 class Point {
     private double x;
     private double y;
