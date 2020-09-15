@@ -1,8 +1,12 @@
 package effectivejava.chapter5.item31;
 import java.util.*;
 
-// Generic union method with wildcard types for enhanced flexibility (Pages 142-3)
+/**
+ * Generic union method with wildcard types for enhanced flexibility (Pages 121 - 122)
+ * @author Meepwn
+ */
 public class Union {
+
     public static <E> Set<E> union(Set<? extends E> s1,
                                    Set<? extends E> s2) {
         Set<E> result = new HashSet<E>(s1);
@@ -10,7 +14,7 @@ public class Union {
         return result;
     }
 
-    // Simple program to exercise flexible generic staticfactory
+    /** Simple program to exercise flexible generic staticfactory */
     public static void main(String[] args) {
         Set<Integer> integers = new HashSet<>();
         integers.add(1); 

@@ -6,7 +6,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-// List-based Chooser - typesafe (Page 129)
+/**
+ * List-based Chooser - typesafe (Page 110 - 111)
+ * @author Meepwn
+ */
 public class Chooser<T> {
     private final List<T> choiceList;
 

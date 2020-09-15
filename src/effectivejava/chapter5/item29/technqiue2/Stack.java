@@ -3,7 +3,11 @@ package effectivejava.chapter5.item29.technqiue2;
 import java.util.Arrays;
 import effectivejava.chapter5.item29.EmptyStackException;
 
-// Generic stack using Object[] (Pages 130-3)
+/**
+ * Generic stack using Object[] (Pages 130-3)
+ *
+ * @author Meepwn
+ */
 public class Stack<E> {
     private Object[] elements;
     private int size = 0;
@@ -18,16 +22,18 @@ public class Stack<E> {
         elements[size++] = e;
     }
 
-    // Appropriate suppression of unchecked warning
+    /** Appropriate suppression of unchecked warning */
     public E pop() {
-        if (size == 0)
+        if (size == 0) {
             throw new EmptyStackException();
+        }
 
         // push requires elements to be of type E, so cast is correct
-        @SuppressWarnings("unchecked") E result =
-                (E) elements[--size];
+        @SuppressWarnings("unchecked")
+        E result = (E) elements[--size];
 
-        elements[size] = null; // Eliminate obsolete reference
+        // Eliminate obsolete reference
+        elements[size] = null;
         return result;
     }
 
@@ -36,16 +42,19 @@ public class Stack<E> {
     }
 
     private void ensureCapacity() {
-        if (elements.length == size)
+        if (elements.length == size) {
             elements = Arrays.copyOf(elements, 2 * size + 1);
+        }
     }
 
-    // Little program to exercise our generic Stack
+    /** Little program to exercise our generic Stack */
     public static void main(String[] args) {
         Stack<String> stack = new Stack<>();
-        for (String arg : args)
+        for (String arg : args) {
             stack.push(arg);
-        while (!stack.isEmpty())
+        }
+        while (!stack.isEmpty()) {
             System.out.println(stack.pop().toUpperCase());
+        }
     }
 }

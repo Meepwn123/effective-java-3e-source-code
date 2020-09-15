@@ -3,12 +3,17 @@ package effectivejava.chapter5.item32;
 import java.util.ArrayList;
 import java.util.List;
 
-// List as a typesafe alternative to a generic varargs parameter (page 149)
+/**
+ * List as a typesafe alternative to a generic varargs parameter (page 128)
+ * @author Meepwn
+ */
 public class FlattenWithList {
+
     static <T> List<T> flatten(List<List<? extends T>> lists) {
         List<T> result = new ArrayList<>();
-        for (List<? extends T> list : lists)
+        for (List<? extends T> list : lists) {
             result.addAll(list);
+        }
         return result;
     }
 

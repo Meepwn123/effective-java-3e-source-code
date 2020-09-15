@@ -5,7 +5,10 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 
-// Wildcard type for parameter that serves as an T producer (page 141)
+/**
+ * Wildcard type for parameter that serves as an T producer (page 121)
+ * @author Meepwn
+ */
 public class Chooser<T> {
     private final List<T> choiceList;
     private final Random rnd = new Random();

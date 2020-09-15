@@ -2,26 +2,37 @@ package effectivejava.chapter5.item30;
 
 import java.util.function.UnaryOperator;
 
-// Generic singleton factory pattern (Page 136-7)
+/**
+ * Generic singleton factory pattern (Page 116 - 117)
+ *
+ * @author Meepwn
+ */
 public class GenericSingletonFactory {
-    // Generic singleton factory pattern
-    private static UnaryOperator<Object> IDENTITY_FN = (t) -> t;
+
+    /**
+     * Generic singleton factory pattern
+     */
+    private static final UnaryOperator<Object> IDENTITY_FN = (t) -> t;
 
     @SuppressWarnings("unchecked")
     public static <T> UnaryOperator<T> identityFunction() {
         return (UnaryOperator<T>) IDENTITY_FN;
     }
 
-    // Sample program to exercise generic singleton
+    /**
+     * Sample program to exercise generic singleton
+     */
     public static void main(String[] args) {
-        String[] strings = { "jute", "hemp", "nylon" };
+        String[] strings = {"jute", "hemp", "nylon"};
         UnaryOperator<String> sameString = identityFunction();
-        for (String s : strings)
+        for (String s : strings) {
             System.out.println(sameString.apply(s));
+        }
 
-        Number[] numbers = { 1, 2.0, 3L };
+        Number[] numbers = {1, 2.0, 3L};
         UnaryOperator<Number> sameNumber = identityFunction();
-        for (Number n : numbers)
+        for (Number n : numbers) {
             System.out.println(sameNumber.apply(n));
+        }
     }
 }
