@@ -3,7 +3,10 @@ package effectivejava.chapter6.item39.repeatableannotation;
 import java.util.ArrayList;
 import java.util.List;
 
-// Program containing repeatable annotations (Page 186)
+/**
+ * Program containing repeatable annotations (Page 157)
+ * @author Meepwn
+ */
 public class Sample4 {
     @ExceptionTest(ArithmeticException.class)
     public static void m1() {  // Test should pass
@@ -20,13 +23,13 @@ public class Sample4 {
     @ExceptionTest(ArithmeticException.class)
     public static void m3() { }  // Should fail (no exception)
 
-    // Code containing a repeated annotation (Page 186)
+    /** Code containing a repeated annotation (Page 157) */
     @ExceptionTest(IndexOutOfBoundsException.class)
     @ExceptionTest(NullPointerException.class)
     public static void doublyBad() {
         List<String> list = new ArrayList<>();
 
-        // The spec permits this staticfactory to throw either
+        // The spec permits this static factory to throw either
         // IndexOutOfBoundsException or NullPointerException
         list.addAll(5, null);
     }

@@ -1,10 +1,13 @@
 package effectivejava.chapter6.item39.markerannotation;
 
-// Program to process marker annotations (Page 182)
-
 import java.lang.reflect.*;
 
+/**
+ * Program to process marker annotations (Page 154)
+ * @author Meepwn
+ */
 public class RunTests {
+
     public static void main(String[] args) throws Exception {
         int tests = 0;
         int passed = 0;
@@ -26,4 +29,5 @@ public class RunTests {
         System.out.printf("Passed: %d, Failed: %d%n",
                 passed, tests - passed);
     }
+
 }

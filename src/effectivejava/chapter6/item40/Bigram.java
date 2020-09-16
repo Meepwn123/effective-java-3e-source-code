@@ -1,7 +1,10 @@
 package effectivejava.chapter6.item40;
 import java.util.*;
 
-// Can you spot the bug? (Page 188)
+/**
+ * Can you spot the bug? (Page 158 - 159)
+ * @author Meepwn
+ */
 public class Bigram {
     private final char first;
     private final char second;
@@ -21,9 +24,11 @@ public class Bigram {
 
     public static void main(String[] args) {
         Set<Bigram> s = new HashSet<>();
-        for (int i = 0; i < 10; i++)
-            for (char ch = 'a'; ch <= 'z'; ch++)
+        for (int i = 0; i < 10; i++) {
+            for (char ch = 'a'; ch <= 'z'; ch++) {
                 s.add(new Bigram(ch, ch));
+            }
+        }
         System.out.println(s.size());
     }
 }

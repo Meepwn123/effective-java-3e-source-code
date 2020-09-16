@@ -4,11 +4,12 @@ import java.lang.annotation.*;
 // Marker annotation type declaration - Page 180
 import java.lang.annotation.*;
 
-// Marker annotation type declaration (Page 180)
-
 /**
+ * Marker annotation type declaration (Page 152 - 153)
+ *
  * Indicates that the annotated method is a test method.
  * Use only on parameterless static methods.
+ * @author Meepwn
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)

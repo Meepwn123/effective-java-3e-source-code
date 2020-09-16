@@ -1,7 +1,11 @@
 package effectivejava.chapter6.item34;
 
-// Switch on an enum to simulate a missing method (Page 167)
+/**
+ * Switch on an enum to simulate a missing method (Page 141)
+ * @author Meepwn
+ */
 public class Inverse {
+
     public static Operation inverse(Operation op) {
         switch(op) {
             case PLUS:   return Operation.MINUS;
