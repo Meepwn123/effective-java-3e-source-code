@@ -4,13 +4,17 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-// Prints all large anagram groups in a dictionary iteratively (Page 204)
+/**
+ * Prints all large anagram groups in a dictionary iteratively (Page 172 - 173)
+ * @author Meepwn
+ */
 public class IterativeAnagrams {
+
     public static void main(String[] args) throws IOException {
         File dictionary = new File(args[0]);
         int minGroupSize = Integer.parseInt(args[1]);
 
-        Map<String, Set<String>> groups = new HashMap<>();
+        Map<String, Set<String>> groups = new HashMap<>(16);
         try (Scanner s = new Scanner(dictionary)) {
             while (s.hasNext()) {
                 String word = s.next();
@@ -19,9 +23,11 @@ public class IterativeAnagrams {
             }
         }
 
-        for (Set<String> group : groups.values())
-            if (group.size() >= minGroupSize)
+        for (Set<String> group : groups.values()) {
+            if (group.size() >= minGroupSize) {
                 System.out.println(group.size() + ": " + group);
+            }
+        }
     }
 
     private static String alphabetize(String s) {

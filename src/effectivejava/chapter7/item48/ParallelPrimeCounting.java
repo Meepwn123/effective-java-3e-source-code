@@ -3,8 +3,12 @@ package effectivejava.chapter7.item48;
 import java.math.BigInteger;
 import java.util.stream.LongStream;
 
+/**
+ * Prime-counting stream pipeline - parallel version (Page 188)
+ * @author Meepwn
+ */
 public class ParallelPrimeCounting {
-    // Prime-counting stream pipeline - parallel version (Page 225)
+
     static long pi(long n) {
         return LongStream.rangeClosed(2, n)
                 .parallel()

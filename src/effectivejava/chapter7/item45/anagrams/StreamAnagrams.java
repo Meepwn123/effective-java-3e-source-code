@@ -8,8 +8,12 @@ import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.groupingBy;
 
-// Overuse of streams - don't do this! (page 205)
+/**
+ * Overuse of streams - don't do this! (page 173)
+ * @author Meepwn
+ */
 public class StreamAnagrams {
+
     public static void main(String[] args) throws IOException {
         Path dictionary = Paths.get(args[0]);
         int minGroupSize = Integer.parseInt(args[1]);

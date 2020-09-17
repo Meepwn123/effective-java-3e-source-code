@@ -1,12 +1,17 @@
 package effectivejava.chapter7.item47;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-// Two ways to generate a stream of all the sublists of a list (Pages 219-20)
+/**
+ * Two ways to generate a stream of all the subLists of a list (Pages 185)
+ * @author Meepwn
+ */
 public class SubLists {
-    // Returns a stream of all the sublists of its input list (Page 219)
+    /** Returns a stream of all the subLists of its input list (Page 185) */
     public static <E> Stream<List<E>> of(List<E> list) {
         return Stream.concat(Stream.of(Collections.emptyList()),
                 prefixes(list).flatMap(SubLists::suffixes));
@@ -22,15 +27,17 @@ public class SubLists {
                 .mapToObj(start -> list.subList(start, list.size()));
     }
 
-//    // Returns a stream of all the sublists of its input list, excluding the empty list
-//    // This version is derived from the obvious iterative code (Page 220)
-//    public static <E> Stream<List<E>> of(List<E> list) {
-//        return IntStream.range(0, list.size())
-//                .mapToObj(start ->
-//                        IntStream.rangeClosed(start + 1, list.size())
-//                                .mapToObj(end -> list.subList(start, end)))
-//                .flatMap(x -> x);
-//    }
+    /**
+     * Returns a stream of all the subLists of its input list, excluding the empty list
+     * This version is derived from the obvious iterative code (Page 185)
+     */
+    public static <E> Stream<List<E>> ofIter(List<E> list) {
+        return IntStream.range(0, list.size())
+                .mapToObj(start ->
+                        IntStream.rangeClosed(start + 1, list.size())
+                                .mapToObj(end -> list.subList(start, end)))
+                .flatMap(x -> x);
+    }
 
     public static void main(String[] args) {
         List<String> list = Arrays.asList(args);

@@ -9,8 +9,12 @@ import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.groupingBy;
 
-// Tasteful use of streams enhances clarity and conciseness (Page 205)
+/**
+ * Tasteful use of streams enhances clarity and conciseness (Page 174)
+ * @author Meepwn
+ */
 public class HybridAnagrams {
+
     public static void main(String[] args) throws IOException {
         Path dictionary = Paths.get(args[0]);
         int minGroupSize = Integer.parseInt(args[1]);

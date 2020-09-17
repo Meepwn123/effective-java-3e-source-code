@@ -1,7 +1,11 @@
 package effectivejava.chapter7.item45;
 
-// Refrain from using streams to process char values (Page 206)
+/**
+ * Refrain from using streams to process char values (Page 174 - 175)
+ * @author Meepwn
+ */
 public class CharStream {
+
     public static void main(String[] args) {
         // Does not produce the expected result
         "Hello world!".chars().forEach(System.out::print);
