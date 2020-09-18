@@ -1,6 +1,10 @@
 package effectivejava.chapter9.item60;
 
+/**
+ * @author Meepwn
+ */
 public class IntChange {
+
     public static void main(String[] args) {
         int itemsBought = 0;
         int funds = 100;
@@ -11,4 +15,5 @@ public class IntChange {
         System.out.println(itemsBought + " items bought.");
         System.out.println("Cash left over: " + funds + " cents");
     }
+
 }

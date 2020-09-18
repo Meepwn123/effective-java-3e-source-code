@@ -1,7 +1,11 @@
 package effectivejava.chapter9.item60;
 
+/**
+ * @author Meepwn
+ */
 public class Change {
-    // Broken - uses floating point for monetary calculation!
+
+    /** Broken - uses floating point for monetary calculation! */
     public static void main(String[] args) {
         double funds = 1.00;
         int itemsBought = 0;
@@ -12,4 +16,5 @@ public class Change {
         System.out.println(itemsBought + " items bought.");
         System.out.println("Change: $" + funds);
     }
+
 }

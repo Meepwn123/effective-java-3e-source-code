@@ -2,10 +2,14 @@ package effectivejava.chapter9.item60;
 
 import java.math.BigDecimal;
 
+/**
+ * @author Meepwn
+ */
 public class BigDecimalChange {
-    public static void main(String[] args) {
-        final BigDecimal TEN_CENTS = new BigDecimal(".10");
 
+    private static final BigDecimal TEN_CENTS = new BigDecimal(".10");
+
+    public static void main(String[] args) {
         int itemsBought = 0;
         BigDecimal funds = new BigDecimal("1.00");
         for (BigDecimal price = TEN_CENTS;

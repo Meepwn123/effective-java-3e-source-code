@@ -5,15 +5,29 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.Set;
 
-// Reflective instantiaion demo (Page 283)
+/**
+ * Reflective instantiation demo (Page 237)
+ * @author Meepwn
+ */
 public class ReflectiveInstantiation {
-    // Reflective instantiation with interface access
+
+    /** Reflective instantiation with interface access*/
     public static void main(String[] args) {
+
+        args = new String[] {
+                "java.util.TreeSet",
+                "java.util.HashSet",
+                "-b",
+                "-a",
+                "-c"
+        };
+
         // Translate the class name into a Class object
         Class<? extends Set<String>> cl = null;
         try {
-            cl = (Class<? extends Set<String>>)  // Unchecked cast!
-                    Class.forName(args[0]);
+
+            // Unchecked cast!
+            cl = (Class<? extends Set<String>>) Class.forName(args[0]);
         } catch (ClassNotFoundException e) {
             fatalError("Class not found.");
         }
@@ -21,6 +35,7 @@ public class ReflectiveInstantiation {
         // Get the constructor
         Constructor<? extends Set<String>> cons = null;
         try {
+            assert cl != null;
             cons = cl.getDeclaredConstructor();
         } catch (NoSuchMethodException e) {
             fatalError("No parameterless constructor");
@@ -29,6 +44,7 @@ public class ReflectiveInstantiation {
         // Instantiate the set
         Set<String> s = null;
         try {
+            assert cons != null;
             s = cons.newInstance();
         } catch (IllegalAccessException e) {
             fatalError("Constructor not accessible");
@@ -41,6 +57,7 @@ public class ReflectiveInstantiation {
         }
 
         // Exercise the set
+        assert s != null;
         s.addAll(Arrays.asList(args).subList(1, args.length));
         System.out.println(s);
     }

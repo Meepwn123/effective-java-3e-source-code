@@ -4,10 +4,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
-// Printing the contents of a URL with transferTo, added in Java 9 (Page 269)
+/**
+ * Printing the contents of a URL with transferTo, added in Java 9 (Page 226)
+ * @author Meepwn
+ */
 public class Curl {
+
     public static void main(String[] args) throws IOException {
-        try (InputStream in = new URL(args[0]).openStream()) {
+        String url = "http://www.baidu.com";
+        try (InputStream in = new URL(url).openStream()) {
             in.transferTo(System.out);
         }
     }
