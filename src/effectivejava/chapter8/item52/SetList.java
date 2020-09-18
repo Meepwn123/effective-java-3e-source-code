@@ -1,9 +1,18 @@
 package effectivejava.chapter8.item52;
-import java.util.*;
 
-// What does this program print? (Page 241)
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+
+/**
+ * What does this program print? (Page 202)
+ * @author Meepwn
+ */
 public class SetList {
+
     public static void main(String[] args) {
+
         Set<Integer> set = new TreeSet<>();
         List<Integer> list = new ArrayList<>();
 

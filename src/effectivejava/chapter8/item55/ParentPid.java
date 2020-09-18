@@ -2,8 +2,12 @@ package effectivejava.chapter8.item55;
 
 import java.util.Optional;
 
-// Avoiding unnecessary use of Optional's isPresent method (Page 252)
+/**
+ * Avoiding unnecessary use of Optional's isPresent method (Page 211)
+ * @author Meepwn
+ */
 public class ParentPid {
+
     public static void main(String[] args) {
         ProcessHandle ph = ProcessHandle.current();
 

@@ -1,13 +1,19 @@
 package effectivejava.chapter8.item56;
 
+import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import java.lang.annotation.ElementType;
 
-// Documentation comment examples (Pages 255-9)
+/**
+ * Documentation comment examples (Pages 255-9)
+ * @author Meepwn
+ * @param <E>
+ */
+@SuppressWarnings("unused")
 public class DocExamples<E> {
-    // Method comment (Page 255)
+
+    // Method comment (Page 214)
     /**
      * Returns the element at the specified position in this list.
      *
@@ -25,7 +31,7 @@ public class DocExamples<E> {
         return null;
     }
 
-    // Use of @implSpec to describe self-use patterns & other visible implementation details. (Page 256)
+    // Use of @implSpec to describe self-use patterns & other visible implementation details. (Page 215)
     /**
      * Returns true if this collection is empty.
      *
@@ -37,30 +43,36 @@ public class DocExamples<E> {
         return false;
     }
 
-    // Use of the @literal tag to include HTML and javadoc metacharacters in javadoc comments. (Page 256)
+    // Use of the @literal tag to include HTML and javadoc metacharacters in javadoc comments. (Page 215)
     /**
      * A geometric series converges if {@literal |r| < 1}.
      */
     public void fragment() {
     }
 
-    // Controlling summary description when there is a period in the first "sentence" of doc comment. (Page 257)
+    // Controlling summary description when there is a period in the first "sentence" of doc comment. (Page 215)
     /**
      * A suspect, such as Colonel Mustard or {@literal Mrs. Peacock}.
      */
     public enum FixedSuspect {
-        MISS_SCARLETT, PROFESSOR_PLUM, MRS_PEACOCK, MR_GREEN, COLONEL_MUSTARD, MRS_WHITE
+        //
+        MISS_SCARLETT,
+        PROFESSOR_PLUM,
+        MRS_PEACOCK,
+        MR_GREEN,
+        COLONEL_MUSTARD,
+        MRS_WHITE
     }
 
 
-    // Generating a javadoc index entry in Java 9 and later releases. (Page 258)
+    // Generating a javadoc index entry in Java 9 and later releases. (Page 216)
     /**
      * This method complies with the {@index IEEE 754} standard.
      */
     public void fragment2() {
     }
 
-    // Documenting enum constants (Page 258)
+    // Documenting enum constants (Page 216 - 217)
     /**
      * An instrument section of a symphony orchestra.
      */
@@ -75,10 +87,10 @@ public class DocExamples<E> {
         PERCUSSION,
 
         /** Stringed instruments, such as violin and cello. */
-        STRING;
+        STRING
     }
 
-    // Documenting an annotation type (Page 259)
+    // Documenting an annotation type (Page 217)
     /**
      * Indicates that the annotated method is a test method that
      * must throw the designated exception to pass.
