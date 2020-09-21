@@ -2,8 +2,12 @@ package effectivejava.chapter11.item79;
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-// Broken - invokes alien method from synchronized block!
+/**
+ * Broken - invokes alien method from synchronized block! (Page 268)
+ * @author Meepwn
+ */
 public class ObservableSet<E> extends ForwardingSet<E> {
+
     public ObservableSet(Set<E> set) { super(set); }
 
 //    private final List<SetObserver<E>> observers
@@ -28,7 +32,7 @@ public class ObservableSet<E> extends ForwardingSet<E> {
 //        }
 //    }
 
-//    // Alien method moved outside of synchronized block - open calls
+//    // Alien method moved outside of synchronized block - open calls Page - 270
 //    private void notifyElementAdded(E element) {
 //        List<SetObserver<E>> snapshot = null;
 //        synchronized(observers) {
@@ -39,8 +43,7 @@ public class ObservableSet<E> extends ForwardingSet<E> {
 //    }
 
     // Thread-safe observable set with CopyOnWriteArrayList
-    private final List<SetObserver<E>> observers =
-            new CopyOnWriteArrayList<>();
+    private final List<SetObserver<E>> observers = new CopyOnWriteArrayList<>();
 
     public void addObserver(SetObserver<E> observer) {
         observers.add(observer);
@@ -51,21 +54,27 @@ public class ObservableSet<E> extends ForwardingSet<E> {
     }
 
     private void notifyElementAdded(E element) {
-        for (SetObserver<E> observer : observers)
+        for (SetObserver<E> observer : observers) {
             observer.added(this, element);
+        }
     }
 
-    @Override public boolean add(E element) {
+    @Override
+    public boolean add(E element) {
         boolean added = super.add(element);
-        if (added)
+        if (added) {
             notifyElementAdded(element);
+        }
         return added;
     }
 
-    @Override public boolean addAll(Collection<? extends E> c) {
+    @Override
+    public boolean addAll(Collection<? extends E> c) {
         boolean result = false;
-        for (E element : c)
-            result |= add(element);  // Calls notifyElementAdded
+        for (E element : c) {
+            // Calls notifyElementAdded
+            result |= add(element);
+        }
         return result;
     }
 }

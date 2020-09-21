@@ -1,8 +1,12 @@
 package effectivejava.chapter11.item78.fixedstopthread1;
 import java.util.concurrent.*;
 
-// Properly synchronized cooperative thread termination
+/**
+ * Properly synchronized cooperative thread termination
+ * @author Meepwn
+ */
 public class StopThread {
+
     private static boolean stopRequested;
 
     private static synchronized void requestStop() {
@@ -17,8 +21,9 @@ public class StopThread {
             throws InterruptedException {
         Thread backgroundThread = new Thread(() -> {
             int i = 0;
-            while (!stopRequested())
+            while (!stopRequested()) {
                 i++;
+            }
         });
         backgroundThread.start();
 

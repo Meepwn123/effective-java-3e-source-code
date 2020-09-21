@@ -4,14 +4,19 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-// Simple test of ObservableSet - Page 319
+/**
+ * Simple test of ObservableSet - Page 269 - 270
+ * @author Meepwn
+ */
 public class Test3 {
+
     public static void main(String[] args) {
         ObservableSet<Integer> set =
                 new ObservableSet<>(new HashSet<>());
 
-// Observer that uses a background thread needlessly
+        // Observer that uses a background thread needlessly
         set.addObserver(new SetObserver<>() {
+            @Override
             public void added(ObservableSet<Integer> s, Integer e) {
                 System.out.println(e);
                 if (e == 23) {
@@ -28,7 +33,8 @@ public class Test3 {
             }
         });
 
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 100; i++) {
             set.add(i);
+        }
     }
 }
