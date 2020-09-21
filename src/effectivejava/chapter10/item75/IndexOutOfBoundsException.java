@@ -1,6 +1,11 @@
-package effectivejava.chapter10.item74;
+package effectivejava.chapter10.item75;
 
+/**
+ * @author Meepwn
+ */
+@SuppressWarnings("unused")
 public class IndexOutOfBoundsException extends RuntimeException {
+
     private final int lowerBound;
     private final int upperBound;
     private final int index;
