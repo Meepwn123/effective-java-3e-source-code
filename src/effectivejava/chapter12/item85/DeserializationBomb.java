@@ -4,9 +4,13 @@ import static effectivejava.chapter12.Util.*;
 import java.util.HashSet;
 import java.util.Set;
 
-// Deserialization bomb - deserializing this stream takes forever - Page 340
+/**
+ * Deserialization bomb - deserializing this stream takes forever - Page 288
+ * @author Meepwn
+ */
 public class DeserializationBomb {
-    public static void main(String[] args) throws Exception {
+
+    public static void main(String[] args) {
         System.out.println(bomb().length);
         deserialize(bomb());
     }
@@ -18,7 +22,8 @@ public class DeserializationBomb {
         for (int i = 0; i < 100; i++) {
             Set<Object> t1 = new HashSet<>();
             Set<Object> t2 = new HashSet<>();
-            t1.add("foo"); // make it not equal to t2
+            // make it not equal to t2
+            t1.add("foo");
             s1.add(t1);
             s1.add(t2);
             s2.add(t1);
@@ -26,6 +31,7 @@ public class DeserializationBomb {
             s1 = t1;
             s2 = t2;
         }
+        // method omitted for brevity
         return serialize(root);
     }
 }

@@ -1,19 +1,23 @@
 package effectivejava.chapter12.item87;
 import java.io.*;
 
-// StringList with a reasonable custom serialized form  - Page 349
+/**
+ * StringList with a reasonable custom serialized form  - Page 295 - 296
+ * @author Meepwn
+ */
+@SuppressWarnings("unused")
 public final class StringList implements Serializable {
     private transient int size   = 0;
     private transient Entry head = null;
 
-    // No longer Serializable!
+    /** No longer Serializable! */
     private static class Entry {
         String data;
         Entry  next;
         Entry  previous;
     }
 
-    // Appends the specified string to the list
+    /** Appends the specified string to the list */
     public final void add(String s) {  }
 
     /**
@@ -30,8 +34,9 @@ public final class StringList implements Serializable {
         s.writeInt(size);
 
         // Write out all elements in the proper order.
-        for (Entry e = head; e != null; e = e.next)
+        for (Entry e = head; e != null; e = e.next) {
             s.writeObject(e.data);
+        }
     }
 
     private void readObject(ObjectInputStream s)
@@ -40,8 +45,9 @@ public final class StringList implements Serializable {
         int numElements = s.readInt();
 
         // Read in all elements and insert them in list
-        for (int i = 0; i < numElements; i++)
+        for (int i = 0; i < numElements; i++) {
             add((String) s.readObject());
+        }
     }
 
     // Remainder omitted

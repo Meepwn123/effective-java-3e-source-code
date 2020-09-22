@@ -2,6 +2,9 @@ package effectivejava.chapter12;
 
 import java.io.*;
 
+/**
+ * @author Meepwn
+ */
 public class Util {
     public static byte[] serialize(Object o) {
         ByteArrayOutputStream ba = new ByteArrayOutputStream();

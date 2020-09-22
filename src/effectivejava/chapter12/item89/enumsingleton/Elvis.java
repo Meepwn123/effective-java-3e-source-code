@@ -2,11 +2,17 @@ package effectivejava.chapter12.item89.enumsingleton;
 
 import java.util.*;
 
-// Enum singleton - the preferred approach - Page 311
+/**
+ * Enum singleton - the preferred approach - Page 311
+ * @author Meepwn
+ */
 public enum Elvis {
+    //
     INSTANCE;
-    private String[] favoriteSongs =
+
+    private final String[] favoriteSongs =
         { "Hound Dog", "Heartbreak Hotel" };
+
     public void printFavorites() {
         System.out.println(Arrays.toString(favoriteSongs));
     }

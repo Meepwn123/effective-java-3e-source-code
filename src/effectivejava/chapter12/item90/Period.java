@@ -1,11 +1,14 @@
 package effectivejava.chapter12.item90;
 
-// Period class with serialization proxy - Pages 363-364
+// Period class with serialization proxy - Pages 307 - 364
 
 import java.util.*;
 import java.io.*;
 
-// Immutable class that uses defensive copying
+/**
+ * Immutable class that uses defensive copying
+ * @author Meepwn
+ */
 public final class Period implements Serializable {
     private final Date start;
     private final Date end;
@@ -19,19 +22,21 @@ public final class Period implements Serializable {
     public Period(Date start, Date end) {
         this.start = new Date(start.getTime());
         this.end   = new Date(end.getTime());
-        if (this.start.compareTo(this.end) > 0)
+        if (this.start.compareTo(this.end) > 0) {
             throw new IllegalArgumentException(
                     start + " after " + end);
+        }
     }
 
     public Date start () { return new Date(start.getTime()); }
 
     public Date end () { return new Date(end.getTime()); }
 
+    @Override
     public String toString() { return start + " - " + end; }
 
 
-    // Serialization proxy for Period class
+    /** Serialization proxy for Period class - Page 307 */
     private static class SerializationProxy implements Serializable {
         private final Date start;
         private final Date end;
@@ -41,16 +46,22 @@ public final class Period implements Serializable {
             this.end = p.end;
         }
 
-        private static final long serialVersionUID =
-                234098243823485285L; // Any number will do (Item 87)
+        /** Any number will do (Item 87) */
+        private static final long serialVersionUID = 234098243823485285L;
+
+        private Object readResolve() {
+            // use public constructor
+            return new Period(start, end);
+        }
+
     }
 
-    // writeReplace method for the serialization proxy pattern
+    /** writeReplace method for the serialization proxy pattern */
     private Object writeReplace() {
         return new SerializationProxy(this);
     }
 
-    // readObject method for the serialization proxy pattern
+    /** readObject method for the serialization proxy pattern */
     private void readObject(ObjectInputStream stream)
             throws InvalidObjectException {
         throw new InvalidObjectException("Proxy required");
